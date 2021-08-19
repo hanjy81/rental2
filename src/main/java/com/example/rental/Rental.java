@@ -1,6 +1,10 @@
 package com.example.rental;
 
 import javax.persistence.*;
+
+import com.example.rental.external.Payment;
+import com.example.rental.external.PaymentService;
+
 import org.springframework.beans.BeanUtils;
 import java.util.List;
 import java.util.Date;
@@ -18,6 +22,7 @@ public class Rental {
     private String status;
     private int amt;
 
+    // 1. pub/sub start
     @PostPersist
     public void onPostPersist(){
         RentalPlaced rentalPlaced = new RentalPlaced();
@@ -26,6 +31,22 @@ public class Rental {
 
 
     }
+    // 1. pub/sub end
+
+    // 2. req/res start
+    // @PostPersist
+    // public void callPaymentStart(){
+    //     Payment payment = new Payment();
+    //     payment.setRentalId(this.getId());
+    //     payment.setProductId(this.getProductId());        
+    //     payment.setStatus("Req/Res PAYMENT COMPLETED");
+    //     payment.setAmt(this.getAmt());
+        
+    //     // start payment
+    //     PaymentService paymentService = RentalApplication.applicationContext.getBean(PaymentService.class);
+    //     paymentService.startPayment(payment);
+    // }
+    // 2. req/res end
 
     @PreRemove
     public void onPreRemove(){
