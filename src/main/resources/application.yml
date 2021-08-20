@@ -76,6 +76,12 @@ spring:
         event-out:
           destination: rental
           contentType: application/json
+
+
+#api:
+#  url:
+#    payment: http://payment:8080
+
 api:
   url:
     payment: ${configurl}
