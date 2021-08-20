@@ -6,13 +6,9 @@ public class RentalCanceled extends AbstractEvent {
     Long id;
     Long customerId;
     Long productId;
+    int amt;
     String address;
     String status;
-    int amt;
-    
-    public RentalCanceled() {
-        this.eventType = this.getClass().getSimpleName();
-    }
 
     public String getEventType() {
         return this.eventType;
@@ -46,6 +42,14 @@ public class RentalCanceled extends AbstractEvent {
         this.productId = productId;
     }
 
+    public int getAmt() {
+        return this.amt;
+    }
+
+    public void setAmt(int amt) {
+        this.amt = amt;
+    }
+
     public String getAddress() {
         return this.address;
     }
@@ -59,15 +63,11 @@ public class RentalCanceled extends AbstractEvent {
     }
 
     public void setStatus(String status) {
-        this.status = status;
+        this.status = this.getClass().getSimpleName();
     }
-
-    public int getAmt() {
-        return this.amt;
-    }
-
-    public void setAmt(int amt) {
-        this.amt = amt;
+        
+    public RentalCanceled() {
+        this.eventType = this.getClass().getSimpleName();
     }
 
 }
