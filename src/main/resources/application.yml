@@ -76,3 +76,6 @@ spring:
         event-out:
           destination: rental
           contentType: application/json
+api:
+  url:
+    payment: ${configurl}
